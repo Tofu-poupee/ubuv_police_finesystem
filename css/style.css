@@ -101,7 +101,7 @@ td {
 /* ✔ チェック列を最小限の幅に調整 */
 td:nth-child(1),
 th:nth-child(1) {
-  width: 7%;
+  width: 10%;
   white-space: nowrap;
   padding-left: 6px;
   padding-right: 6px;
@@ -189,3 +189,4 @@ input[type="checkbox"] {
     text-overflow: unset;
   }
 }
+
