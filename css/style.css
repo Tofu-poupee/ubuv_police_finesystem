@@ -108,6 +108,14 @@ th:nth-child(1) {
   text-align: center;
 }
 
+td:nth-child(3),
+th:nth-child(3) {
+  width: 15%;
+  white-space: nowrap;
+  padding-left: 6px;
+  padding-right: 6px;
+  text-align: center;
+}
 
 tr td:nth-child(4) {
   text-align: left;
@@ -189,4 +197,3 @@ input[type="checkbox"] {
     text-overflow: unset;
   }
 }
-
