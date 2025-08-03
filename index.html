@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金額自動合計</title>
+    <link rel="stylesheet" href="/css/test.css">
+</head>
+
+<body>
+    <h2>金額を選んでください</h2>
+    <div class="table-container">
+        <form id="priceForm">
+            <table>
+                <thead>
+                    <tr>
+                        <th>✔</th>
+                        <th>罪状</th>
+                        <th>金額(万単位)</th>
+                        <th>内容</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" class="price" value="100"></td>
+                        <td>軽強盗罪</td>
+                        <td>100</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" class="price" value="100"></td>
+                        <td>中強盗罪</td>
+                        <td>150</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" class="price" value="100"></td>
+                        <td>重強盗罪</td>
+                        <td>300</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" class="price" value="100"></td>
+                        <td>誘拐拉致監禁罪</td>
+                        <td>5</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="price" value="100"></td>
+                        <td>警察署襲撃罪</td>
+                        <td>1000</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" class="price" value="100"></td>
+                        <td>プレイヤー殺人罪</td>
+                        <td>30</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" class="price" value="100"></td>
+                        <td>薬物所持・販売罪</td>
+                        <td>15</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" class="price" value="100"></td>
+                        <td>わいせつ罪</td>
+                        <td>500</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" class="price" value="100"></td>
+                        <td>業務妨害罪</td>
+                        <td>500</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" class="price" value="100"></td>
+                        <td>銃刀法違反罪</td>
+                        <td>5</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" class="price" value="100"></td>
+                        <td>公務車両窃盗違反罪</td>
+                        <td>250</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" class="price" value="100"></td>
+                        <td>逃走補助罪</td>
+                        <td>70</td>
+                        <td></td>
+                    </tr>
+
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <h3>合計金額: <span id="total">0</span> 万円</h3>
+    <h3>請求金額: <span id="multiplied">0</span> </h3>
+
+    <script>
+        function calculateTotal() {
+            const checkboxes = document.querySelectorAll('.price:checked');
+            let sum = 0;
+            checkboxes.forEach(cb => {
+                sum += parseInt(cb.value);
+            });
+            const multiplied = sum * 1000;
+
+            document.getElementById('total').textContent = ` ${sum.toLocaleString('ja-JP')}`;
+            document.getElementById('multiplied').textContent = ` ${multiplied.toLocaleString('ja-JP')}円`;
+        }
+
+        document.querySelectorAll('.price').forEach(cb => {
+            cb.addEventListener('change', calculateTotal);
+        });
+        // function formatYen(amount) {
+        //     return amount.toLocaleString('ja-JP') + '円';
+        // }
+
+        // function calculateTotal() {
+        //     const checkboxes = document.querySelectorAll('.amount:checked');
+        //     let total = 0;
+        //     checkboxes.forEach(cb => {
+        //         total += parseInt(cb.value);
+        //     });
+        //     document.getElementById('total').textContent = total;
+        //     document.getElementById('multiplied').textContent = formatYen(total * 1000);
+        // }
+
+        // // すべてのチェックボックスにイベントリスナーをつける
+        // document.querySelectorAll('.amount').forEach(cb => {
+        //     cb.addEventListener('change', calculateTotal);
+        // });
+
+        // // 初期化（ページ読み込み時にも計算）
+        // calculateTotal();
+    </script>
+</body>
+
+</html>

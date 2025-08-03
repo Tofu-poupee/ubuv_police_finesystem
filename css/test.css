@@ -1,0 +1,92 @@
+body {
+  background-color: #ffe6f0;
+  background-image: url('https://www.transparenttextures.com/patterns/hearts.png');
+  background-repeat: repeat;
+}
+
+h1 {
+  font-size: 26px;
+  text-align: center;
+  color: #d87093;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.table-container {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+table {
+  width: 100%;
+  min-width: 500px;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(220, 160, 200, 0.3);
+}
+
+th,
+td {
+  padding: 14px 12px;
+  border: 1px solid #f8c8dc;
+  text-align: center;
+  font-size: 16px;
+}
+
+th {
+  background-color: #ffe0f0;
+  color: #b03060;
+}
+
+tbody tr:hover {
+  background-color: #fff5f9;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.2);
+  accent-color: #ff99cc;
+  cursor: pointer;
+}
+
+.result-area {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #cc3366;
+  background-color: #fff0fa;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(255, 182, 193, 0.3);
+  width: 90%;
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.result-line {
+  margin: 8px 0;
+}
+
+/* 💡 レスポンシブ対応 */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 22px;
+  }
+
+  th,
+  td {
+    font-size: 14px;
+    padding: 10px 8px;
+  }
+
+  .result-area {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  input[type="checkbox"] {
+    transform: scale(1.1);
+  }
+}
