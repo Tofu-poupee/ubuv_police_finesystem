@@ -191,22 +191,22 @@
 
         const multiplied = sum * 10000; // 単位：円
 
-        // 万円表示または億円表示
         const totalElement = document.getElementById('total');
         if (sum >= 10000) {
-            const oku = (sum / 10000).toFixed(2);
-            totalElement.textContent = `${parseFloat(oku).toLocaleString('ja-JP')} 億円`;
+            const oku = Math.floor(sum / 10000); // 億の部分
+            const man = sum % 10000;             // 万円の部分
+            totalElement.textContent = `${oku.toLocaleString('ja-JP')}億${man.toLocaleString('ja-JP')}万円`;
         } else {
-            totalElement.textContent = `${sum.toLocaleString('ja-JP')} 万円`;
+            totalElement.textContent = `${sum.toLocaleString('ja-JP')}万円`;
         }
 
-        // 常に円表示（×10000した値）
         document.getElementById('multiplied').textContent = `${multiplied.toLocaleString('ja-JP')} 円`;
     }
 
     document.querySelectorAll('.price').forEach(cb => {
         cb.addEventListener('change', calculateTotal);
     });
+
 
 </script>
 
