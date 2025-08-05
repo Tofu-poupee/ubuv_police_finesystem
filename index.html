@@ -180,7 +180,7 @@
             checkboxes.forEach(cb => {
                 sum += parseInt(cb.value);
             });
-            const multiplied = sum * 1000;
+            const multiplied = sum * 10000;
 
             document.getElementById('total').textContent = ` ${sum.toLocaleString('ja-JP')}`;
             document.getElementById('multiplied').textContent = ` ${multiplied.toLocaleString('ja-JP')}`;
@@ -193,4 +193,3 @@
 </body>
 
 </html>
-
