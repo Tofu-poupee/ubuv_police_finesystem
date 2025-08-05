@@ -194,8 +194,12 @@
         const totalElement = document.getElementById('total');
         if (sum >= 10000) {
             const oku = Math.floor(sum / 10000); // 億の部分
-            const man = sum % 10000;             // 万円の部分
-            totalElement.textContent = `${oku.toLocaleString('ja-JP')}億${man.toLocaleString('ja-JP')}万円`;
+            const man = sum % 10000;             // 万円の残り
+            if (man === 0) {
+                totalElement.textContent = `${oku.toLocaleString('ja-JP')}億`;
+            } else {
+                totalElement.textContent = `${oku.toLocaleString('ja-JP')}億${man.toLocaleString('ja-JP')}万円`;
+            }
         } else {
             totalElement.textContent = `${sum.toLocaleString('ja-JP')}万円`;
         }
@@ -206,6 +210,7 @@
     document.querySelectorAll('.price').forEach(cb => {
         cb.addEventListener('change', calculateTotal);
     });
+
 
 
 </script>
