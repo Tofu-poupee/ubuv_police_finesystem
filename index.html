@@ -173,16 +173,26 @@
     </div>
 
     <div class="totals">
-        <h3>💰合計金額: <span id="total">0</span> </h3>
+        <h3>💰合計金額: <span id="total">0</span></h3>
         <h3>📝請求金額: <span id="multiplied">0</span></h3>
     </div>
 
+    <div class="totals">
+        <p style="margin-top: 10px;">
+            <label for="divider">割る人数：</label>
+            <input type="number" id="divider" min="1" value="1">
+            <span style="margin-left:4px;">人</span>
+        </p>
+
+        <p>💵割った合計金額: <span id="divided-man">0</span></p>
+        <p>💴割った請求金額: <span id="divided-yen">0</span></p>
+    </div>
 
     <footer>
         <div id="footer">
             <div class="foot-cont">
                 <div id="copy">
-                    <small class="copyright">&copy;&nbsp;2025&nbsp;🛠️ 制作：Clochette·colorée·doudou/ウブ♡ぶいGTA</small>
+                    <small class="copyright">🛠️ 制作：Clochette·colorée·doudou <br> &copy;&nbsp;2025&nbsp;ウブ♡ぶいGTA</small>
                 </div>
             </div>
         </div>
@@ -197,18 +207,19 @@
 
     function calculateTotal() {
         const checkboxes = document.querySelectorAll('.price:checked');
-        let sum = 0;
+        let sum = 0; // 単位：万円
 
         checkboxes.forEach(cb => {
-            sum += parseInt(cb.value); // 単位：万円
+            sum += parseInt(cb.value);
         });
 
         const multiplied = sum * 10000; // 単位：円
 
+        // 💰 合計金額表示（億対応）
         const totalElement = document.getElementById('total');
         if (sum >= 10000) {
-            const oku = Math.floor(sum / 10000); // 億の部分
-            const man = sum % 10000;             // 万円の残り
+            const oku = Math.floor(sum / 10000); // 億
+            const man = sum % 10000;             // 万円
             if (man === 0) {
                 totalElement.textContent = `${oku.toLocaleString('ja-JP')}億`;
             } else {
@@ -218,17 +229,29 @@
             totalElement.textContent = `${sum.toLocaleString('ja-JP')}万円`;
         }
 
+        // 📝 請求金額（円）
         document.getElementById('multiplied').textContent = `${multiplied.toLocaleString('ja-JP')} 円`;
+
+        // 📉 割る数で計算（切り捨て）
+        const divider = parseInt(document.getElementById('divider')?.value) || 1;
+        const dividedMan = Math.floor(sum / divider);          // 万円単位
+        const dividedYen = Math.floor(multiplied / divider);   // 円単位
+
+        // 割った結果の表示
+        if (document.getElementById('divided-man')) {
+            document.getElementById('divided-man').textContent = `${dividedMan.toLocaleString('ja-JP')}万円`;
+        }
+        if (document.getElementById('divided-yen')) {
+            document.getElementById('divided-yen').textContent = `${dividedYen.toLocaleString('ja-JP')} 円`;
+        }
     }
 
+    // チェックボックスと割る数入力の両方で計算を発火
     document.querySelectorAll('.price').forEach(cb => {
         cb.addEventListener('change', calculateTotal);
     });
-
-
+    document.getElementById('divider')?.addEventListener('input', calculateTotal);
 
 </script>
 
 </html>
-
-
